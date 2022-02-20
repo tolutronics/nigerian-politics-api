@@ -172,9 +172,9 @@ app.get("/news", (req, res) => {
     data: articles,
   });
 });
-app.get("/news/:newspaperId", (req, res) => {
+app.get("/news/:source", (req, res) => {
   const filteredArtircles = articles.filter(
-    (x) => x.source == req.params.newspaperId
+    (x) => x.source == req.params.source
   );
   //   console.log(filteredNewspapers);
 
