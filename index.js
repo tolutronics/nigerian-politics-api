@@ -8,7 +8,7 @@ const articles = [];
 const newspapers = [
   {
     name: "arisetv",
-    address: "https://www.arise.tv/politics/",
+    address: "https://www.arise.tv/category/politics/",
     base: "",
   },
   {
@@ -50,6 +50,72 @@ const newspapers = [
 
 const iterate = (html, newspaper) => {
   const $ = cheerio.load(html);
+  $('a:contains("Obi")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("Labour")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("Datti")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("2023")', html).each(function () {
+    console.log(html);
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("INEC")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
   $('a:contains("election")', html).each(function () {
     let title = $(this).text();
     const link = $(this).attr("href");
@@ -62,6 +128,46 @@ const iterate = (html, newspaper) => {
       source: newspaper.name,
     });
   });
+
+  $('a:contains("tinubu")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("atiku")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
+  $('a:contains("kwankwanso")', html).each(function () {
+    let title = $(this).text();
+    const link = $(this).attr("href");
+    if (title.includes("<img")) {
+      title = title.split("/>")[1];
+    }
+    articles.push({
+      title,
+      link: newspaper.base + link,
+      source: newspaper.name,
+    });
+  });
+
   $('a:contains("politics")', html).each(function () {
     let title = $(this).text();
     const link = $(this).attr("href");
@@ -157,7 +263,7 @@ newspapers.forEach(async (newspaper) => {
       iterate(html, newspaper);
     })
     .catch((err) => {
-      console.log(err.response);
+      // console.log(err.response);
     });
 });
 
