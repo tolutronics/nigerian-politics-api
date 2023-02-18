@@ -90,7 +90,6 @@ const iterate = (html, newspaper) => {
   });
 
   $('a:contains("2023")', html).each(function () {
-    console.log(html);
     let title = $(this).text();
     const link = $(this).attr("href");
     if (title.includes("<img")) {
